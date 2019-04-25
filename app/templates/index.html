@@ -1,0 +1,116 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div id="container">
+  <div id="sidebar">
+    <div class="toggle-btn" onclick="togglesidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="/Pickuplines">Pickup Lines</a></li>
+      <li><a href="/Funny">Funny</a></li>
+      <li><a href="/Cheesy">Cheesy</a></li>
+      
+    </ul>
+  </div>
+
+  <header>
+    <h1>Pitch</h1>
+   
+
+  </header>
+  
+  <div class="row">
+   
+    <center>
+      <div class="column jumbotron">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDRa4Pt1I6LrHoARgIAhkS0_tv1LQZOUkQ8HNQoWyVMN385bm1oA"
+            alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Pickup Lines</h2>
+            <p class="card-text">Pitch  a few lines for the people you love.
+            </p>
+            <a href="Pickuplines" class="btn btn-primary">Go Pickup Lines</a>
+          </div>
+        </div>
+      </div>
+      <div class="column jumbotron">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzXoRtoY2XN6vDs6C0Sd8pC9JAvwcLw7GHpGFx-rHWD10D7rq4Vg"
+            alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Funny Pitches</h2>
+            <p class="card-text">Pitch a few funny lines to lighten up somebody's day
+            </p>
+            <a href="Funny" class="btn btn-primary">Go to funny pitches</a>
+          </div>
+        </div>
+      </div>
+      <div class="column jumbotron">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYiOkHXA-LE6RvXBYIJ7pJOZxohQ4jv6jokkPmZnLS2iTcknoD-g"
+            alt="Card image cap">
+          <div class="card-body">
+            <h3 class="card-title">Cheesy Pitches</h3>
+            <p class="card-text">Pitch a few Cheesy lines to spice up a day.
+            </p>
+            <a href="Cheesy" class="btn btn-primary">Go to Cheesy pitches</a>
+          </div>
+        </div>
+      </div>
+    </center>
+  </div>
+  <footer>
+    <p>Made with love by J.Vicky</p>
+  
+        <ul>
+          {% if current_user.is_authenticated %}
+        
+          <li style="padding:15px;">
+            <button type="button" class="btn btn-danger"><a href="{{url_for('auth.logout')}}">Sign out <br> {{current_user.username}} </a></button>
+            {% else %}
+            <button type="button" class="btn btn-primary btn-lg"><a href="{{url_for('auth.login')}}">Sign in</a></button>
+            {%endif%}
+        </ul>
+  </footer>
+  
+
+</div>
+<style>
+  
+body{
+  background-color: blueviolet;
+ 
+
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+
+{% endblock%}
